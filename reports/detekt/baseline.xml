@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>EmptyClassBlock:KtlintTestError.kt$EmptyClassError${}</ID>
+    <ID>EmptyClassBlock:KtlintTestError.kt$EmptyInterfaceError${}</ID>
+    <ID>EmptyFunctionBlock:KtlintTestError.kt${}</ID>
+    <ID>EmptyFunctionBlock:KtlintTestSuccess.kt${}</ID>
+  </CurrentIssues>
+</SmellBaseline>

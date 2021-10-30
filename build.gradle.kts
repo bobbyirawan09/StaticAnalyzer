@@ -2,12 +2,14 @@
 
 plugins {
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
+    id("io.gitlab.arturbosch.detekt") version ("1.18.1")
 }
 
 buildscript {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:7.0.3")
@@ -20,6 +22,7 @@ buildscript {
 
 allprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint") // Version should be inherited from parent
+    apply(plugin = "io.gitlab.arturbosch.detekt") // Version should be inherited from parent
 
     repositories {
         google()
@@ -42,6 +45,29 @@ allprojects {
             exclude("**/*Test.kt") // Excluding test file
         }
     }
+
+    /**
+     * Source from https://detekt.github.io/detekt/gradle.html#kotlin-dsl-3
+     * */
+    detekt {
+        source = files("src/main/java", "src/main/kotlin")
+        toolVersion = "1.18.1"
+        debug = true
+        config = files("${project.rootDir}/reports/detekt/config.yml")
+        baseline = file("${project.rootDir}/reports/detekt/baseline.xml")
+        ignoredBuildTypes = listOf("release")
+        basePath = "${project.rootDir}/reports/detekt"
+        reports {
+            html {
+                enabled = true
+                destination = file("${project.rootDir}/reports/detekt/detekt.html")
+            }
+            txt {
+                enabled = true
+                destination = file("${project.rootDir}/reports/detekt/detekt.txt")
+            }
+        }
+    }
 }
 
 tasks.register("clean", Delete::class) {
@@ -55,4 +81,10 @@ tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.GenerateReportsTask> {
     reportsOutputDirectory.set(
         project.layout.buildDirectory.dir("${project.rootDir}/reports/ktlint/$name")
     )
+}
+
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    // Target version of the generated JVM bytecode. It is used for type resolution.
+    this.jvmTarget = "1.8"
 }
