@@ -5,6 +5,10 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version ("1.18.1")
 }
 
+val reportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
+    output.set(project.rootDir.resolve("reports/detekt/merge.xml")) // or "reports/detekt/merge.sarif"
+}
+
 buildscript {
     repositories {
         google()
@@ -16,7 +20,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31")
 
         // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        // in the individual module build.gradle.kts files
     }
 }
 
@@ -65,6 +69,16 @@ allprojects {
             txt {
                 enabled = true
                 destination = file("${project.rootDir}/reports/detekt/detekt.txt")
+            }
+        }
+    }
+
+    plugins.withType(io.gitlab.arturbosch.detekt.DetektPlugin::class) {
+        tasks.withType(io.gitlab.arturbosch.detekt.Detekt::class) detekt@{
+            finalizedBy(reportMerge)
+
+            reportMerge.configure {
+                input.from(this@detekt.xmlReportFile)
             }
         }
     }

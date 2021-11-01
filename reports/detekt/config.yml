@@ -11,7 +11,7 @@ config:
   validation: true
   warningsAsErrors: false
   # when writing own rules with new properties, exclude the property path e.g.: 'my_rule_set,.*>.*>[my_property]'
-  excludes: ''
+  excludes: 'custom-rules,.*>.*'
 
 processors:
   active: true
@@ -29,6 +29,11 @@ processors:
   # - 'ProjectLOCProcessor'
   # - 'ProjectSLOCProcessor'
   # - 'LicenseHeaderLoaderExtension'
+
+custom-rules:
+  active: true
+  RestrictionUsingBang:
+    active: true
 
 console-reports:
   active: true

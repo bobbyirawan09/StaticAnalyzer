@@ -1,0 +1,4 @@
+RestrictionUsingBang - [onCreate] at /Users/bobby/Documents/Personal/StaticAnalyzer/app/src/main/java/com/bobby/analyzer/MainActivity.kt:12:5 - Signature=MainActivity.kt$MainActivity$override fun onCreate(savedInstanceState: Bundle?)
+EmptyClassBlock - [EmptyClassA] at /Users/bobby/Documents/Personal/StaticAnalyzer/app/src/main/java/com/bobby/analyzer/KtlintTestError.kt:11:19 - Signature=KtlintTestError.kt$EmptyClassA${}
+EmptyClassBlock - [EmptyClassB] at /Users/bobby/Documents/Personal/StaticAnalyzer/app/src/main/java/com/bobby/analyzer/KtlintTestError.kt:14:19 - Signature=KtlintTestError.kt$EmptyClassB${}
+NewLineAtEndOfFile - [KtlintTestError.kt] at /Users/bobby/Documents/Personal/StaticAnalyzer/app/src/main/java/com/bobby/analyzer/KtlintTestError.kt:1:1 - Signature=KtlintTestError.kt$com.bobby.analyzer.KtlintTestError.kt

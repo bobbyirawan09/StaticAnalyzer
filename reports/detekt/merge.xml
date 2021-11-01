@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><checkstyle version="4.3">
+  <file name="../../app/src/main/java/com/bobby/analyzer/MainActivity.kt">
+    <error column="5" line="12" message="Using !! could cause NPE" severity="warning" source="detekt.RestrictionUsingBang"/>
+  </file>
+  <file name="../../app/src/main/java/com/bobby/analyzer/KtlintTestError.kt">
+    <error column="19" line="11" message="The class or object EmptyClassA is empty." severity="warning" source="detekt.EmptyClassBlock"/>
+    <error column="19" line="14" message="The class or object EmptyClassB is empty." severity="warning" source="detekt.EmptyClassBlock"/>
+    <error column="1" line="1" message="The file /Users/bobby/Documents/Personal/StaticAnalyzer/app/src/main/java/com/bobby/analyzer/KtlintTestError.kt is not ending with a new line." severity="warning" source="detekt.NewLineAtEndOfFile"/>
+  </file>
+</checkstyle>

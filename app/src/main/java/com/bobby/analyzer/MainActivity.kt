@@ -18,6 +18,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Class.forName("com.bobby.register.RegisterActivity"))
             startActivity(intent)
         }
+
+        val nullable: String? = null
+        println(nullable!!)
     }
 
 
