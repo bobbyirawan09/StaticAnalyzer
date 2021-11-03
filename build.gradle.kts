@@ -1,5 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+/**
+ * Step 1
+ * */
 plugins {
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
 }
@@ -27,6 +30,8 @@ allprojects {
     }
 
     /**
+     * Step 2
+     *
      * Source https://github.com/JLLeitschuh/ktlint-gradle/blob/master/plugin/src/main/kotlin/org/jlleitschuh/gradle/ktlint/KtlintExtension.kt
      * Optional configure Ktlint
      * */
@@ -49,6 +54,8 @@ tasks.register("clean", Delete::class) {
 }
 
 /**
+ * Step 3
+ *
  * Set placement for report file
  * */
 tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.GenerateReportsTask> {
